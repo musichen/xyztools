@@ -25,7 +25,8 @@ export function mapBundleToReleaseName(filename, version) {
   }
   if (lower.endsWith('.deb')) return names.linuxDeb;
   if (lower.endsWith('.msi')) return names.winMsi;
-  if (lower.endsWith('.exe') && (lower.includes('setup') || lower.includes('nsis'))) {
+  if (lower.endsWith('.exe')) {
+    if (/^(t32|t64|w32|w64)(-arm)?\.exe$/.test(lower)) return null;
     return names.winExe;
   }
   if (lower.endsWith('.appimage')) return names.linuxAppImage;

@@ -90,6 +90,11 @@ for (const src of candidates) {
   staged.push(copyArtifact(src, releaseName));
 }
 
+if (staged.length === 0) {
+  console.error('\nNo mapped installer files after filtering bundle output.');
+  process.exit(1);
+}
+
 const checksumLines = [];
 for (const file of staged) {
   const sum = sha256File(file);
