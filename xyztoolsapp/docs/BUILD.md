@@ -163,7 +163,3 @@ Child **Node** processes receive:
 | `XYZTOOLS_OUTPUT_DIR` | Absolute `…/output` under the user-chosen folder |
 | `XYZTOOLS_WHISPER_MODEL` | e.g. `base`, `medium` |
 | `WHISPER_DOWNLOAD_ROOT` | Whisper weight cache directory |
-
-## Reference project
-
-**voicebox** (`../voicebox/`) — Tauri 2 + React patterns. XYZTools bundles a **Node + yt-dlp + ffmpeg** runtime instead of a single sidecar binary.

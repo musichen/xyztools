@@ -6,4 +6,4 @@ Tauri 2 + React + Vite shell around the same **`yttool.js`** stack as the termin
 - **UI ↔ Rust ↔ Node:** see [`../xyztoolsapp/docs/ARCHITECTURE.md`](../xyztoolsapp/docs/ARCHITECTURE.md)
 - **Publishing:** copy installers into [`../release/`](../release/) (see [`../release/README.md`](../release/README.md))
 
-Design reference: **`voicebox/`** (Tauri desktop, local model paths). XYZTools does not bundle Qwen; it reuses **Whisper** weights under an app-local cache directory plus the repo **`whisper-env`** Python.
+Whisper model weights are not bundled in the installer; they download on first use into an app-local cache. Developers can also use the repo **`whisper-env`** Python environment.

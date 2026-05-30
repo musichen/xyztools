@@ -31,6 +31,3 @@ whisper-env export-ignore
 data export-ignore
 logs export-ignore
 *.log export-ignore
-
-# Large optional vendored tree (not required for XYZTools desktop)
-voicebox export-ignore

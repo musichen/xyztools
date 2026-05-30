@@ -47,15 +47,9 @@ xyztoolsapp/src-tauri/resources/runtime/
 xyztoolsapp/src-tauri/resources/toolkit/
 xyztoolsapp/src-tauri/.bundle-tmp/
 xyztoolsapp/src-tauri/gen/Assets.car
-xyztoolsapp/src-tauri/gen/voicebox.icns
 xyztoolsapp/src-tauri/gen/partial.plist
 tauri/src-tauri/binaries/*
 tauri/src-tauri/gen/
-
-# Voicebox vendored app (separate product tree)
-voicebox/node_modules/
-voicebox/**/target/
-voicebox/**/dist/
 
 # --- Release staging (GitHub upload folder; keep docs + .gitkeep) ---
 release/assets/*
