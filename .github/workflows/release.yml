@@ -59,15 +59,19 @@ jobs:
             libxdo-dev \
             patchelf
 
-      - name: Install & build
+      - name: Install & build (Linux)
+        if: matrix.os == 'linux'
         run: |
           pnpm install
           cd xyztoolsapp
-          if [ "${{ matrix.os }}" = "linux" ]; then
-            pnpm tauri build --bundles deb
-          else
-            pnpm tauri build
-          fi
+          pnpm tauri build --bundles deb
+
+      - name: Install & build (macOS / Windows)
+        if: matrix.os != 'linux'
+        run: |
+          pnpm install
+          cd xyztoolsapp
+          pnpm tauri build
 
       - name: Stage artifacts
         run: pnpm run release:collect
