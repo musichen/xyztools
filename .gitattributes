@@ -1,0 +1,36 @@
+# Files omitted from `git archive` (release source zip).
+# See: pnpm run release:source
+
+codebase.md export-ignore
+PYENV_SETUP.md export-ignore
+QUICKSTART.md export-ignore
+INSTALLATION_COMPLETE.md export-ignore
+
+# Build / runtime caches (not source)
+node_modules export-ignore
+output export-ignore
+dist export-ignore
+build export-ignore
+target export-ignore
+xyztoolsapp/src-tauri/target export-ignore
+xyztoolsapp/src-tauri/resources/runtime export-ignore
+xyztoolsapp/src-tauri/resources/toolkit export-ignore
+xyztools-cli/dist export-ignore
+
+# Release staging (binaries uploaded to GitHub, not in source zip)
+release/assets export-ignore
+release/staging export-ignore
+
+# Local / IDE / secrets
+.env export-ignore
+.env.* export-ignore
+.cursor export-ignore
+.agents export-ignore
+uploads export-ignore
+whisper-env export-ignore
+data export-ignore
+logs export-ignore
+*.log export-ignore
+
+# Large optional vendored tree (not required for XYZTools desktop)
+voicebox export-ignore

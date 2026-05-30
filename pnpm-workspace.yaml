@@ -1,0 +1,4 @@
+packages:
+  - .
+  - xyztools-cli
+  - xyztoolsapp

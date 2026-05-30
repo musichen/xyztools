@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "XYZTools",
+  "version": "0.0.1",
+  "identifier": "app.xyztools.xyztools",
+  "build": {
+    "beforeDevCommand": "pnpm run dev",
+    "beforeBuildCommand": "node scripts/bundle-runtimes.mjs && node scripts/sync-toolkit.mjs && pnpm run build",
+    "devUrl": "http://localhost:1420",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "security": {
+      "csp": null,
+      "capabilities": [
+        {
+          "identifier": "default",
+          "description": "Main window: core + native folder picker.",
+          "windows": ["main"],
+          "permissions": ["core:default", "dialog:default"]
+        }
+      ]
+    },
+    "windows": [
+      {
+        "label": "main",
+        "title": "XYZTools",
+        "width": 920,
+        "height": 780,
+        "minWidth": 640,
+        "minHeight": 520,
+        "resizable": true
+      }
+    ]
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "resources": [
+      "resources/toolkit",
+      "resources/runtime"
+    ],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  },
+  "plugins": {}
+}

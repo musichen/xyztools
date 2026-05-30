@@ -1,0 +1,137 @@
+# =============================================================================
+# XYZTools — gitignore
+# Goal: never commit built artifacts, user data, secrets, machine-local paths,
+# or personal/dev-only docs. Release binaries: build → pnpm run release:stage
+# =============================================================================
+
+# --- Dependencies ---
+node_modules/
+package-lock.json
+bun.lockb
+
+# --- Environment & secrets ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+!*.key.pub
+secrets/
+credentials.json
+credentials*.json
+
+# --- Build outputs ---
+dist/
+build/
+target/
+*.egg-info/
+*.egg
+*.spec
+
+# Installers & bundles (staged under release/assets/)
+*.app
+*.dmg
+*.exe
+*.msi
+*.deb
+*.rpm
+*.AppImage
+*.snap
+
+# xyztools-cli bundle (recreated by pnpm install → prepare)
+xyztools-cli/dist/
+
+# Tauri / desktop
+xyztoolsapp/src-tauri/target/
+xyztoolsapp/src-tauri/resources/runtime/
+xyztoolsapp/src-tauri/resources/toolkit/
+xyztoolsapp/src-tauri/.bundle-tmp/
+xyztoolsapp/src-tauri/gen/Assets.car
+xyztoolsapp/src-tauri/gen/voicebox.icns
+xyztoolsapp/src-tauri/gen/partial.plist
+tauri/src-tauri/binaries/*
+tauri/src-tauri/gen/
+
+# Voicebox vendored app (separate product tree)
+voicebox/node_modules/
+voicebox/**/target/
+voicebox/**/dist/
+
+# --- Release staging (GitHub upload folder; keep docs + .gitkeep) ---
+release/assets/*
+!release/assets/.gitkeep
+release/staging/
+
+# --- User-generated data & outputs ---
+output/
+data/
+!data/.gitkeep
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Transcripts / media (anywhere in repo except allowed json)
+*.txt
+*.srt
+*.wav
+*.mp3
+*.mp4
+audio.*
+temp_*
+tmp/
+temp/
+*.tmp
+# Generated JSON in project root (transcript exports)
+/*.json
+!package.json
+
+# Python
+whisper-env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.whisper-version
+
+# --- Python / Node generated ---
+app/openapi.json
+*.prompt
+
+# --- OS ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+nul
+
+# --- IDE & editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Cursor / agent / local uploads (may contain paths or drafts) ---
+.cursor/
+.agents/
+uploads/
+
+# --- Personal / machine-local docs (not for public reuse) ---
+codebase.md
+INSTALLATION_COMPLETE.md
+PYENV_SETUP.md
+QUICKSTART.md
+
+# --- E2E / test artifacts ---
+backend/tests/results/
+backend/tests/fixtures/reference_voice.wav
+backend/tests/fixtures/reference_voice.txt

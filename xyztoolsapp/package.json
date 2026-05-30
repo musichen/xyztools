@@ -1,0 +1,29 @@
+{
+  "name": "xyztoolsapp",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "packageManager": "pnpm@10.33.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "tauri": "tauri",
+    "icons": "tauri icon assets/logo/xyztools_logo.png -o src-tauri/icons",
+    "tauri:build:app": "tauri build -b app",
+    "tauri:build:dmg": "tauri build -b dmg,app"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.2.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "~5.6.3",
+    "vite": "^6.0.1"
+  }
+}

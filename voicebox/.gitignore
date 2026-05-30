@@ -1,0 +1,70 @@
+# Dependencies
+node_modules/
+bun.lockb
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.prompt
+# Build outputs
+dist/
+build/
+*.egg-info/
+*.egg
+target/
+*.app
+*.dmg
+*.exe
+*.msi
+*.deb
+*.AppImage
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data (user-generated)
+data/
+!data/.gitkeep
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+.env.local
+
+# Generated files
+app/openapi.json
+tauri/src-tauri/binaries/*
+tauri/src-tauri/gen/Assets.car
+tauri/src-tauri/gen/voicebox.icns
+tauri/src-tauri/gen/partial.plist
+
+# PyInstaller
+*.spec
+
+# Windows artifacts
+nul
+
+# Temporary
+tmp/
+temp/
+*.tmp
+
+# E2E test artifacts
+backend/tests/results/
+backend/tests/fixtures/reference_voice.wav
+backend/tests/fixtures/reference_voice.txt
