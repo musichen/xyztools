@@ -11,7 +11,8 @@
     "release:collect": "node scripts/release/collect.mjs",
     "release:source": "node scripts/release/source-archive.mjs",
     "release:stage": "node scripts/release/collect.mjs && node scripts/release/source-archive.mjs",
-    "release:build": "pnpm --dir xyztoolsapp tauri build"
+    "release:build": "pnpm --dir xyztoolsapp tauri build",
+    "release": "pnpm run release:stage"
   },
   "keywords": [
     "youtube",

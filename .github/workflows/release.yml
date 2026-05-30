@@ -110,10 +110,17 @@ jobs:
           cd release/assets
           shasum -a 256 XYZTools* xyztools* 2>/dev/null | awk '{print $1 "  " $2}' > SHA256SUMS || true
 
+      - name: Read release version
+        id: ver
+        run: echo "version=$(tr -d '\n' < release/VERSION)" >> "$GITHUB_OUTPUT"
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          name: ${{ steps.ver.outputs.version }}
+          tag_name: ${{ github.ref_name }}
+          body_path: release/RELEASE_NOTES.md
           files: release/assets/*
-          generate_release_notes: true
+          generate_release_notes: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

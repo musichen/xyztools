@@ -1,25 +1,73 @@
-# XYZTools 0.0.1
+First public release of **XYZTools** — YouTube audio (MP3), playlists, and transcripts from a desktop app or CLI. Bundled Node, yt-dlp, and FFmpeg; Whisper models download on first use.
 
-First packaged release of the **XYZTools** desktop app (Tauri): YouTube → MP3, playlists, and transcripts with bundled Node, yt-dlp, and FFmpeg.
+## What's included
 
-## Install
-
-| Platform | File | Notes |
-|----------|------|--------|
-| **macOS** (Apple Silicon) | `XYZTools.arm64.0.0.1.dmg` | Open DMG, drag **XYZTools** to Applications |
-| **macOS** (Intel) | `XYZTools.x64.0.0.1.dmg` | Same as above |
-| **Windows** | `XYZTools_0.0.1_x64-setup.exe` | Run installer (NSIS) |
-| **Windows** (optional) | `XYZTools-0.0.1-x64.msi` | MSI if built on Windows |
-| **Linux** | `xyztools_0.0.1_amd64.deb` | `sudo dpkg -i xyztools_0.0.1_amd64.deb` |
-| **Source** | `XYZTools-0.0.1-source.zip` | Build yourself — see `xyztoolsapp/docs/BUILD.md` |
-
-Verify downloads with `SHA256SUMS` in this folder.
+- **Desktop app** (Tauri) — URL, output folder, MP3 / playlist / transcript, Whisper model prefetch
+- **CLI** — `pnpm exec xyztools` interactive menu, or `node yttool.js convert …`
+- **Installers** per platform below + source archive for building yourself
 
 ## What is not bundled
 
-- **Whisper model weights** — downloaded on first use inside the app (~hundreds of MB per model).
-- **Whisper Python runtime** — optional one-time install from the app UI on macOS.
+- Whisper **model weights** (downloaded inside the app on first use, ~hundreds of MB per model)
+- Whisper **Python runtime** on macOS (optional one-time setup from the app UI)
 
-## Changes
+---
 
-- Initial desktop release layout and installers (build on each OS to produce platform artifacts).
+## macOS
+
+| Arch | Installer |
+|------|-----------|
+| Apple Silicon (arm64) | `XYZTools.arm64.0.0.1.dmg` |
+| Intel (x64) | `XYZTools.x64.0.0.1.dmg` *(build on Intel Mac or CI)* |
+
+Open the DMG, drag **XYZTools** to Applications.
+
+---
+
+## Windows
+
+| Type | Installer |
+|------|-----------|
+| NSIS setup (x64) | `XYZTools_0.0.1_x64-setup.exe` |
+| MSI (optional) | `XYZTools-0.0.1-x64.msi` |
+
+---
+
+## Linux
+
+| Format | Package |
+|--------|---------|
+| Debian/Ubuntu amd64 | `xyztools_0.0.1_amd64.deb` |
+
+```bash
+sudo dpkg -i xyztools_0.0.1_amd64.deb
+```
+
+---
+
+## Source
+
+| Archive | File |
+|---------|------|
+| Source zip | `XYZTools-0.0.1-source.zip` |
+
+Build instructions: `xyztoolsapp/docs/BUILD.md`
+
+---
+
+## Verify downloads
+
+Attach `SHA256SUMS` with the release assets, then:
+
+```bash
+shasum -a 256 -c SHA256SUMS
+```
+
+---
+
+## Changes in 0.0.1
+
+- Initial packaged desktop release (Tauri + React)
+- Interactive CLI (`xyztools-cli`)
+- Unified `yttool.js` / `yttool.py` for MP3, playlists, and transcripts
+- GitHub Actions release workflow for multi-platform installers
