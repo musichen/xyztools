@@ -93,6 +93,7 @@ jobs:
   publish:
     name: github-release
     needs: [build, source]
+    if: ${{ !cancelled() && needs.source.result == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -108,7 +109,8 @@ jobs:
           mkdir -p release/assets
           find dist -type f \( -name '*.dmg' -o -name '*.deb' -o -name '*.exe' -o -name '*.msi' -o -name '*.zip' \) -exec cp -n {} release/assets/ \;
           cd release/assets
-          shasum -a 256 XYZTools* xyztools* 2>/dev/null | awk '{print $1 "  " $2}' > SHA256SUMS || true
+          shasum -a 256 * 2>/dev/null | awk '{print $1 "  " $2}' > SHA256SUMS || true
+          ls -la
 
       - name: Read release version
         id: ver
