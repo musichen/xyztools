@@ -44,7 +44,14 @@ jobs:
         if: matrix.os == 'linux'
         run: |
           sudo apt-get update
-          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+          sudo apt-get install -y \
+            libwebkit2gtk-4.1-dev \
+            libjavascriptcoregtk-4.1-dev \
+            libappindicator3-dev \
+            librsvg2-dev \
+            libssl-dev \
+            libgtk-3-dev \
+            patchelf
 
       - name: Install & build
         run: |
@@ -109,7 +116,14 @@ jobs:
           mkdir -p release/assets
           find dist -type f \( -name '*.dmg' -o -name '*.deb' -o -name '*.exe' -o -name '*.msi' -o -name '*.zip' \) -exec cp -n {} release/assets/ \;
           cd release/assets
-          shasum -a 256 * 2>/dev/null | awk '{print $1 "  " $2}' > SHA256SUMS || true
+          shopt -s nullglob
+          files=(*)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No installer files found under dist/"
+            find ../dist -type f | head -50
+            exit 1
+          fi
+          shasum -a 256 * | awk '{print $1 "  " $2}' > SHA256SUMS
           ls -la
 
       - name: Read release version
@@ -120,9 +134,11 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           name: ${{ steps.ver.outputs.version }}
-          tag_name: ${{ github.ref_name }}
           body_path: release/RELEASE_NOTES.md
-          files: release/assets/*
+          files: |
+            release/assets/*
+          fail_on_unmatched_files: false
+          make_latest: true
           generate_release_notes: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
