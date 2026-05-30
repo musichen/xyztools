@@ -114,13 +114,14 @@ jobs:
       - name: Flatten release folder
         run: |
           mkdir -p release/assets
-          find dist -type f \( -name '*.dmg' -o -name '*.deb' -o -name '*.exe' -o -name '*.msi' -o -name '*.zip' \) -exec cp -n {} release/assets/ \;
+          find dist -type f -size +0 \( -name '*.dmg' -o -name '*.deb' -o -name '*.exe' -o -name '*.msi' -o -name '*.zip' \) -exec cp -n {} release/assets/ \;
+          find release/assets -type f -empty -delete
           cd release/assets
           shopt -s nullglob
           files=(*)
           if [ ${#files[@]} -eq 0 ]; then
             echo "No installer files found under dist/"
-            find ../dist -type f | head -50
+            find ../../dist -type f | head -50
             exit 1
           fi
           shasum -a 256 * | awk '{print $1 "  " $2}' > SHA256SUMS
@@ -136,7 +137,12 @@ jobs:
           name: ${{ steps.ver.outputs.version }}
           body_path: release/RELEASE_NOTES.md
           files: |
-            release/assets/*
+            release/assets/*.dmg
+            release/assets/*.exe
+            release/assets/*.deb
+            release/assets/*.msi
+            release/assets/*.zip
+            release/assets/SHA256SUMS
           fail_on_unmatched_files: false
           make_latest: true
           generate_release_notes: false
