@@ -31,7 +31,7 @@ function IntroScreen({ onContinue }) {
   return (
     <Box flexDirection="column">
       <Text bold color="magenta">
-        YouTube tools
+        XYZTools
       </Text>
       <Box marginTop={1} marginBottom={1}>
         <Text>
