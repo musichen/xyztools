@@ -1446,6 +1446,7 @@ Found a bug or have a feature request? Feel free to:
 - [docs/PROJECT_EVOLUTION.md](docs/PROJECT_EVOLUTION.md) - how the project evolved
 - [docs/XYZTOOLSAPP.md](docs/XYZTOOLSAPP.md) - app notes
 - [TRANSCRIPT_METHODS.md](TRANSCRIPT_METHODS.md) - how each transcript method works
+- [examples.sh](examples.sh) - runnable usage examples, starting with a basic transcript extraction
 
 ## 📄 License
 
