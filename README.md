@@ -1448,6 +1448,11 @@ Found a bug or have a feature request? Feel free to:
 - [TRANSCRIPT_METHODS.md](TRANSCRIPT_METHODS.md) - how each transcript method works
 - [examples.sh](examples.sh) - runnable usage examples, starting with a basic transcript extraction
 
+## Troubleshooting
+
+- **Whisper setup fails**: run `./fix_whisper_install.sh`. It recreates the `whisper-env` environment used for transcription.
+- **Python version problems**: this toolchain is sensitive to the Python version. Follow the pyenv setup described in the install sections above before debugging further.
+
 ## 📄 License
 
 MIT License - Free to use, modify, and distribute
